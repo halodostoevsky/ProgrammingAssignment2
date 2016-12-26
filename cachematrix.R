@@ -7,7 +7,7 @@
 # * setInverse     get the cahced value (inverse of the matrix)
 # * getInverse     get the cahced value (inverse of the matrix)
 
-makeMatrix <- function(x = numeric()) {
+makeMatrix <- function(x = matrix()) {
         m <- NULL
         setMatrix <- function(y) {
                 x <<- y
@@ -20,6 +20,11 @@ makeMatrix <- function(x = numeric()) {
              setInverse = setInverse,
              getInverse = getInverse)
 }
+
+## cacheInverse first checks to see if the inverse has already been calculated. ##If so, it gets the value stored from the cache directly. 
+##Is not, it calculates the inverse of the matrix and sets the value of the
+##inverse in the cache via the setInverse function.
+
 cacheInverse <- function(x, ...) {
         m <- x$getInverse()
         if(!is.null(m)) {
@@ -38,8 +43,4 @@ cacheInverse <- function(x, ...) {
 #summary(x)
 #x$getInverse()
 #cacheInverse(x) 
-#cacheInverse(x) }
-
-##It workeds just the way it should. Basically, it first checks to see if the
-#inverse has already been calculated. If so, it gets the value stored from the ##cache directly. Is not, it calculates the inverse of the matrix and sets the
-#value of the inverse in the cache via the setInverse function. 
+#cacheInverse(x)
